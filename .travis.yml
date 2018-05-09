@@ -1,0 +1,8 @@
+language: php
+php:
+  - '7.2'
+  - '7.1'
+  - nightly
+# As a first step: only linting to check the compatible PHP versions
+script:
+  - if find . -name "*.php" ! -path "./vendor/*" -print0 | xargs -0 -n 1 -P 8 php -l | grep -v "No syntax errors detected"; then exit 1; fi
